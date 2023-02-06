@@ -1,0 +1,9 @@
+.input{
+    border: 1px solid;
+    border-radius: 10%;
+    padding: 10px;
+    margin: 1%;
+  }
+  .input:hover {
+    filter: drop-shadow(0 0 1em #0dfc00aa);
+  }
