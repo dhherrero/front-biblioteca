@@ -1,4 +1,5 @@
 import {Link} from "wouter";
+import './Title.css'
 
 export default function Title (){
     return (

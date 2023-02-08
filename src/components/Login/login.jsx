@@ -11,7 +11,7 @@ export default function Login (){
     
     return (
         <section className="App-content">
-           <Title></Title>
+           <Title />
             <form>
                 <input type="text" id="user" className="input" placeholder="Nombre de usuario"  ></input>
                 <input type="password" id="pass" className="input" placeholder="Password" ></input>
