@@ -1,8 +1,10 @@
+import { Link } from "wouter";
+import "./Not-found.css"
 
 export default function NotFound (){
     return(
         <div>
-            <h1>404 - Not Found</h1>
+            <Link to="/"><img src="/404.png" className="errorIcon" /></Link>
         </div>
     )
 }
