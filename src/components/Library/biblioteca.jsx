@@ -1,4 +1,4 @@
-import Navbar from "../NavBar/navbar";
+import Navbar from "../NavBar/Navbar";
 
 
 export default function Library (){

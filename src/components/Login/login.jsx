@@ -1,6 +1,6 @@
-import './login.css'
+import './Login.css'
 import { useLocation } from 'wouter'
-import Title from '../../page/title/title'
+import Title from '../../page/title/Title'
 
 export default function Login (){
     const [, setLocation] = useLocation()

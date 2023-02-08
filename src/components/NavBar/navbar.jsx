@@ -1,17 +1,19 @@
 import React, {useState} from "react";
 import "./Navbar.css"
+import { Link } from "wouter";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false)
     return(
         <div className="navbar">
           
-            <div className="nav_logo"><img src="/grema.png" className="logo" alt="GREMA logo" />  <span className="titulo">BIBLIOTECA GREMA</span> </div>
+            <div className="nav_logo"><Link to="/"><img src="/grema.png" className="navIcon" alt="GREMA logo" title="Logo GREMA"/></Link>  <span className="titulo">BIBLIOTECA GREMA</span> </div>
             <div className={`nav_items ${isOpen && "open"}`}>
-                <a href="#"> INICIO</a>
-                <a href="#"> BIO</a>
-                <a href="#"> PORTAFOLIO</a>
-                <a href="#"> CONTACTO</a>
+                <Link to="#"><a > INICIO</a></Link>
+                <Link to="#"><a > MIS LIBROS</a></Link>
+                <Link to="#"><a > AJUSTES</a></Link>
+                <Link to="/login"><a > LOGOUT</a></Link>
+               
             </div>
             <div className={`nav_toggle ${isOpen && "open"}`} onClick={ () => setIsOpen(!isOpen)} >
                 <span></span>

@@ -1,6 +1,6 @@
 import {Link} from "wouter";
-import Title from "../title/title";
-import './home.css'
+import Title from "../title/Title";
+import './Home.css'
 export default function Home (){
     return (
         <div>
