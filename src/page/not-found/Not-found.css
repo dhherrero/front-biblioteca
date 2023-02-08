@@ -1,7 +1,9 @@
 .errorIcon {
-    width: 600px;
-    margin-right: 10px;
-    height: 400px ;
-    padding: 6px !important;
+    width: 70%;
+    height: 55% ;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+   
 }
 
