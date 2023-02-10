@@ -1,3 +1,7 @@
+
+.listaLibros{
+    display: flex;
+}
 .libros{
     border: 1px solid blue;
     border-radius: 8px;
@@ -16,5 +20,4 @@
     margin-left: 15px;
     text-align: left;
     
-
 }
