@@ -1,24 +1,18 @@
-import Navbar from "../NavBar/Navbar";
-
-import { useEffect, useState } from "react";
-import './Libros.css';
 import obtenerLibros from "../../service/getBooks";
+import { useEffect, useState } from "react";
+import "./ListaLibros.css"
 
-
-
-
-export default function Libros (){
+export default function ListaLibros(){
     const [books, setBooks] = useState([])
     useEffect(()=> {
         obtenerLibros()
             .then((result) => setBooks(result.data))
         
     },[])
+
     return(
         <>
-            <Navbar />
-            <h2> LIBROS DE PRUEBA</h2>
-            <div className="listaLibros">
+        <div className="listaLibros">
             {books.map((libro,i)=>{
                 return(
                     <div key={i} className="libros">
@@ -31,8 +25,6 @@ export default function Libros (){
                     </div>
                 )
             })}</div>
-           
         </>
     )
-
 }
