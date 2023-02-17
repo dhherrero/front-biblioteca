@@ -1,21 +1,15 @@
 import Navbar from "../NavBar/Navbar";
-import axios from "axios";
+
 import { useEffect, useState } from "react";
 import './Libros.css';
+import obtenerLibros from "../../service/getBooks";
 
-const obtenerLibros= async() =>{
-    const url = "http://localhost:8080/allBooks"
-    const result = await axios.get(url)
-    console.log(result.data)
-    return result
-}
+
+
 
 export default function Libros (){
-
     const [books, setBooks] = useState([])
-
     useEffect(()=> {
-        
         obtenerLibros()
             .then((result) => setBooks(result.data))
         
