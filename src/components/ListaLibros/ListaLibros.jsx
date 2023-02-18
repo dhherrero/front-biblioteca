@@ -20,7 +20,7 @@ export default function ListaLibros(){
                         <Link to={`/biblioteca/${libro.numero}`}>
                         <img className="portada" src={libro.imagen}/>
                         <div className="infoBook">
-                            <p><b>Titulo: </b> {libro.numero}</p>
+                            <p><b>Titulo: </b> {libro.titulo}</p>
                             <p><b>Páginas: </b> {libro.paginas}</p>
                             <p><b>Edición: </b> {libro.edicion}</p>
                         </div></Link>
