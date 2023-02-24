@@ -20,3 +20,21 @@
     text-align: left;
     
 }
+
+.orderBy{
+    text-align: center;
+    align-items: center;
+    border: 2px solid rgb(140, 78, 249);
+    color: rgb(68, 68, 225);
+    border-radius: 1cqb;
+    width:200px;
+}
+
+.orderBy:hover{
+    cursor: pointer;
+    background-color: white;
+    font-weight:bold;
+    border: 2px solid rgb(101, 18, 243);
+    color: rgb(54, 0, 249);
+
+}

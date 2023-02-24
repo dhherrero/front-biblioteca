@@ -10,7 +10,35 @@ export default function Login (){
     }
     
     return (
-        <section className="App-content">
+        <>
+
+        <div class="main">  	
+		
+        <input type="checkbox" id="chk" aria-hidden="true"/>
+			<div class="login">
+				<form class="form">
+					<label for="chk" aria-hidden="true">Log in</label>
+					<input class="inputLogin" type="text" name="email" placeholder="NIF" required=""/>
+					<input class="inputLogin" type="password" name="pswd" placeholder="Password" required=""/>
+					<button>Log in</button>
+				</form>
+			</div>
+
+            
+      <div class="register">
+				<form class="form">
+					<label for="chk" aria-hidden="true">Register</label>
+					<input class="inputLogin" type="text" name="txt" placeholder="NIF" required=""/>
+                    <input class="inputLogin" type="text" name="txt" placeholder="Name" required=""/>
+					<input class="inputLogin" type="email" name="email" placeholder="Email" required=""/>
+					<input class="inputLogin" type="password" name="pswd" placeholder="Password" required=""/>
+					<button>Register</button>
+				</form>
+			</div>
+        
+	</div>
+    
+   {/* <section className="App-content">
            <Title />
             <form>
                 <input type="text" id="user" className="input" placeholder="Nombre de usuario"  ></input>
@@ -19,6 +47,7 @@ export default function Login (){
             <button onClick={handleLogin}>
                 Login
             </button>
-        </section>
+        </section>  */}
+    </>
     )
     }
