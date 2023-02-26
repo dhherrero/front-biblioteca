@@ -1,37 +1,54 @@
 import './Login.css'
+import login from '../../service/userService'
 import { useLocation } from 'wouter'
-import Title from '../../page/title/Title'
+import { useState } from 'react'
+
 
 export default function Login (){
     const [, setLocation] = useLocation()
     
-    function handleLogin(){
-        setLocation('/biblioteca')
+    const [formData, setFormData] = useState({
+        nif: '',
+        password: ''
+      });
+    
+    const handleInputChange = event => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+      };
+
+    const handleLocation=(result) =>{
+        (result==="OK")? setLocation('/biblioteca'): ""
+    }
+    
+    function handleLogin(event){
+        event.preventDefault()
+        console.log(formData)
+        login(formData).then((result)=> {console.log("LOGIN: "+ result); handleLocation(result)})
     }
     
     return (
         <>
 
-        <div class="main">  	
+        <div className="main">  	
 		
         <input type="checkbox" id="chk" aria-hidden="true"/>
-			<div class="login">
-				<form class="form">
+			<div className="login">
+				<form className="form">
 					<label for="chk" aria-hidden="true">Log in</label>
-					<input class="inputLogin" type="text" name="email" placeholder="NIF" required=""/>
-					<input class="inputLogin" type="password" name="pswd" placeholder="Password" required=""/>
-					<button>Log in</button>
+					<input className="inputLogin" onChange={handleInputChange} value={formData.nif} type="text" name="nif" placeholder="NIF" required=""/>
+					<input className="inputLogin" onChange={handleInputChange}  value={formData.password} type="password" name="password" placeholder="Password" required=""/>
+					<button onClick={handleLogin}>Log in</button>
 				</form>
 			</div>
 
             
-      <div class="register">
-				<form class="form">
+      <div className="register">
+				<form className="form">
 					<label for="chk" aria-hidden="true">Register</label>
-					<input class="inputLogin" type="text" name="txt" placeholder="NIF" required=""/>
-                    <input class="inputLogin" type="text" name="txt" placeholder="Name" required=""/>
-					<input class="inputLogin" type="email" name="email" placeholder="Email" required=""/>
-					<input class="inputLogin" type="password" name="pswd" placeholder="Password" required=""/>
+					<input className="inputLogin" type="text" name="txt" placeholder="NIF" required=""/>
+					<input className="inputLogin" type="email" name="email" placeholder="Email" required=""/>
+					<input className="inputLogin" type="password" name="pswd" placeholder="Password" required=""/>
 					<button>Register</button>
 				</form>
 			</div>

@@ -7,6 +7,8 @@ const UploadForm = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
 
+ 
+ 
   const handleFileInputChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };

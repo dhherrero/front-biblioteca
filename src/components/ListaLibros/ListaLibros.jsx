@@ -1,11 +1,11 @@
-import obtenerLibros from "../../service/getBooks";
+import {obtenerLibros} from "../../service/getBooks";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import "./ListaLibros.css"
 
 export default function ListaLibros(){
     const [books, setBooks] = useState([])
-    const [orderBy, setOrderBy] = useState("") 
+    const [orderBy, setOrderBy] = useState("defecto") 
     
     useEffect(()=> {
         obtenerLibros(orderBy)
@@ -24,7 +24,7 @@ export default function ListaLibros(){
         <>
        <span>Order by </span>
         <select value={orderBy} onChange={handleChange} className="orderBy">
-            <option value="">Selecciona una opción</option>
+            <option value="defecto">Selecciona una opción</option>
             <option value="titulo">TITULO</option>
             <option value="autor">AUTOR</option>
             <option value="edad">EDAD</option>
