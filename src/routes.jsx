@@ -15,7 +15,7 @@ export default function Routes (){
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={Login} />
                 <Route path="/biblioteca" component={Libros} />
-                <Route path="/biblioteca/:numero" component={InfoLibro} />
+                <Route path="/biblioteca/:id" component={InfoLibro} />
                 <Route path="/newBook" component={UploadForm} />
                 <Route component={NotFound} /> 
                 

@@ -3,9 +3,13 @@ import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import "./ListaLibros.css"
 
+
+
+
 export default function ListaLibros(){
+    const portadaDefecto="/defecto3.png"
     const [books, setBooks] = useState([])
-    const [orderBy, setOrderBy] = useState("defecto") 
+    const [orderBy, setOrderBy] = useState("") 
     
     useEffect(()=> {
         obtenerLibros(orderBy)
@@ -32,12 +36,12 @@ export default function ListaLibros(){
         <div className="listaLibros">
             {books.map((libro,i)=>{
                 return(
-                    <div key={libro.numero} className="libros">
-                        <Link to={`/biblioteca/${libro.numero}`}>
-                        <img className="portada" src={libro.imagen}/>
+                    <div key={libro.id} className="libros">
+                        <Link to={`/biblioteca/${libro.id}`}>
+                        <img className="portada" src={libro.portada? libro.portada:portadaDefecto}/>
                         <div className="infoBook">
                             <p><b>Titulo: </b> {libro.titulo}</p>
-                            <p><b>Páginas: </b> {libro.paginas}</p>
+                            <p><b>Páginas: </b> {libro.numeroPaginas}</p>
                             <p><b>Edición: </b> {libro.edicion}</p>
                         </div></Link>
                     </div>
