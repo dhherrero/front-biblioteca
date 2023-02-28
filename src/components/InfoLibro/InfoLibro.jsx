@@ -5,7 +5,7 @@ import Navbar from "../NavBar/Navbar";
 import "./InfoLibro.css"
 
 export default function InfoLibro({params}){
-    const portadaDefecto="/defecto2.png"
+    const portadaDefecto="/defecto3.png"
     const {id} = params
     const [book, setBook] = useState()
     

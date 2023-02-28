@@ -31,7 +31,7 @@ export default function ListaLibros(){
             <option value="defecto">Selecciona una opción</option>
             <option value="titulo">TITULO</option>
             <option value="autor">AUTOR</option>
-            <option value="edad">EDAD</option>
+            <option value="edad">EDAD RECOMENDADA</option>
         </select>
         <div className="listaLibros">
             {books.map((libro,i)=>{
@@ -41,8 +41,8 @@ export default function ListaLibros(){
                         <img className="portada" src={libro.portada? libro.portada:portadaDefecto}/>
                         <div className="infoBook">
                             <p><b>Titulo: </b> {libro.titulo}</p>
-                            <p><b>Páginas: </b> {libro.numeroPaginas}</p>
-                            <p><b>Edición: </b> {libro.edicion}</p>
+                            <p><b>Autor/es: </b> {libro.autores}</p>
+                            <p><b>Edad recomendada: </b> {libro.edad}</p>
                         </div></Link>
                     </div>
                 )

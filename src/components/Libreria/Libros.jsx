@@ -8,7 +8,7 @@ export default function Libros (){
     return(
         <>
             <Navbar />
-            <h2> LIBROS DE PRUEBA</h2>
+            <h2> LIBROS</h2>
             <ListaLibros />  
             
         </>

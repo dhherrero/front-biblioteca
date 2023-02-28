@@ -1,23 +1,38 @@
+
+
 .listaLibros{
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    
+    
 }
 .libros{
-    border: 1px solid blue;
-    border-radius: 8px;
-    padding: 10px;
-    display: flex;
-    margin: 10px;
-    align-items: center;
+   
+    display:grid;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(auto-fit,210px);
+    align-items: first baseline;
+    text-align: center;
+   
+      
 }
 .portada{
-    width: 120px;
-    height: 200px;
+    max-width:60%;
+    max-height: 40%;
+    min-height: 20%;
+    min-width: 30%;
+    
 }
 
 .infoBook{
+    border: 1px solid blue;
+    padding: 5px;
+    border-radius: 8px; 
     display: block;
     margin-left: 15px;
     text-align: left;
+    font-size: auto-fit;
     
 }
 
@@ -28,6 +43,7 @@
     color: rgb(68, 68, 225);
     border-radius: 1cqb;
     width:200px;
+    margin-bottom: 10px;
 }
 
 .orderBy:hover{
