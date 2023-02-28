@@ -3,8 +3,8 @@ import axios from "axios"
 
 export const obtenerLibros= async(orderBy) =>{
     const url = "http://localhost:8080/book/allBooks"
-    //const result = await axios.get(url, {params: {orderBy}})
-    const result = await axios.get(url)
+    const result = await axios.get(url, {params: {orderBy}})
+    //const result = await axios.get(url)
     return result
 }
 

@@ -43,26 +43,34 @@ const UploadForm = () => {
     <div className='content' >
         <h4>Rellene los siguientes campos</h4>
       <form onSubmit={handleFormSubmit} className="formulario">
-        <input type="text" placeholder='Titulo'/><br/>
-        <input type="text" placeholder='Descripción'/><br/>
-        <input type="text" placeholder='Autor/es'/><br/>
-        <input type="text" placeholder='ISBN'/><br/>
-        <input type="number" placeholder='Número de páginas'/><br/>
-        <input type="text" placeholder='Lengua publicación'/><br/>
-        <input type="text" placeholder='Lengua traducción'/><br/>
-        <input type="number" placeholder='Edad recomendada'/><br/>
-        <input type="text" placeholder='Formato'/><br/>
-        <input type="text" placeholder='Genero'/><br/>
-        <input type="number" placeholder='Número de copias'/><br/>
+        <input type="text" className="inputNew" placeholder='Titulo'/><br/>
+        <textarea type="text" id="descripcion" className="inputNew" placeholder='Descripción'/><br/>
+        <input type="text" className="inputNew" placeholder='Autor/es, por ejemplo:  Juan Rodriguez, Felipe Pintor'/><br/>
+        
+        <div className='numeros'>
+          <input type="number" className="inputNew" placeholder='Número de páginas'/>
+          <input type="number"className="inputNew" placeholder='Número de copias'/>
+          <input type="number" className="inputNew" placeholder='Edad recomendada'/>
+        </div>
+        <input type="text" className="inputNew" placeholder='ISBN'/><br/>
+        <div className='dobleCampo' >
+          <input type="text" className="inputNew" placeholder='Lengua publicación'/>
+          <input type="text"className="inputNew" placeholder='Lengua traducción'/>
+        </div>
+        <div className='dobleCampo' >
+          <input type="text" className="inputNew" placeholder='Formato'/>
+          <input type="text" className="inputNew" placeholder='Género'/> <br/>
+        </div>
         <span className='inputOpcion'>Portada</span>
-        <input type="file" onChange={handleFileInputChange} /><br/>
+        <input type="file" onChange={handleFileInputChange}/><br/>
         <span className='inputOpcion'>Imagen 2</span>
         <input type="file" onChange={handleFileInputChange} /><br/>
         <span className='inputOpcion'>Imagen 3</span>
         <input type="file" onChange={handleFileInputChange} /><br/>
-        
-        <button type="submit">Upload</button><br/>
-      </form>
+        <button type="submit" className='upload'>Upload</button><br/>
+  </form>
+
+     
       {imageUrl && (
         <div>
           <img src={imageUrl} alt="uploaded" />

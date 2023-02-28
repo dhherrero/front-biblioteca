@@ -9,7 +9,7 @@ import "./ListaLibros.css"
 export default function ListaLibros(){
     const portadaDefecto="/defecto3.png"
     const [books, setBooks] = useState([])
-    const [orderBy, setOrderBy] = useState("") 
+    const [orderBy, setOrderBy] = useState("defecto") 
     
     useEffect(()=> {
         obtenerLibros(orderBy)
