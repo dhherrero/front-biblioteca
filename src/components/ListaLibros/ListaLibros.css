@@ -2,8 +2,10 @@
 
 .listaLibros{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
     align-items: center;
+    gap: 10px;
+ 
     
     
 }
@@ -11,9 +13,9 @@
    
     display:grid;
     grid-auto-rows: max-content;
-    grid-template-columns: repeat(auto-fit,210px);
     align-items: first baseline;
     text-align: center;
+
    
       
 }
@@ -43,6 +45,7 @@
     color: rgb(68, 68, 225);
     border-radius: 1cqb;
     width:200px;
+    margin-right: 43px;
     margin-bottom: 10px;
 }
 

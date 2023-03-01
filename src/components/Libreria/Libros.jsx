@@ -8,8 +8,10 @@ export default function Libros (){
     return(
         <>
             <Navbar />
-            <h2> LIBROS</h2>
-            <ListaLibros />  
+            <h2 className="tt"> LIBROS</h2>
+            <div className="booksList">
+                <ListaLibros />
+            </div>  
             
         </>
     )
