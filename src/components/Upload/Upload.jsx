@@ -10,10 +10,7 @@ const UploadForm = () => {
   const [portada, setPortada] = useState(null);
   const [imagen2, setImagen2] = useState(null);
   const [imagen3, setImagen3] = useState(null);
-  
-  const [imageUrl, setImageUrl] = useState(null);
-  const [imageUrl2, setImageUrl2] = useState(null);
-  const [imageUrl3, setImageUrl3] = useState(null);
+
 
   const [body, setBody] = useState({
         titulo:null,
@@ -30,9 +27,9 @@ const UploadForm = () => {
         formato:null,
         genero:null,
         copias:null,
-        portada: {imageUrl},
-        imagen2: {imageUrl2},
-        imagen3: {imageUrl3}
+        portada: null,
+        imagen2: null,
+        imagen3: null
   });
 
  
@@ -75,7 +72,7 @@ const UploadForm = () => {
           'https://api.cloudinary.com/v1_1/dnsxhjncj/image/upload',
           formData
         );
-        setImageUrl(response.data.secure_url);
+        body.portada=response.data.secure_url
         setPortada(null);
       } catch (error) {
         console.log(error);
@@ -92,7 +89,7 @@ const UploadForm = () => {
           'https://api.cloudinary.com/v1_1/dnsxhjncj/image/upload',
           formData2
         );
-        setImageUrl2(response.data.secure_url);
+        body.imagen2=response.data.secure_url
         setImagen2(null);
       } catch (error) {
         console.log(error);
@@ -108,13 +105,15 @@ const UploadForm = () => {
           'https://api.cloudinary.com/v1_1/dnsxhjncj/image/upload',
           formData3
         );
-        setImageUrl3(response.data.secure_url);
+        body.imagen3=response.data.secure_url
+        setBody({ ...body, [imagen3]: response.data.secure_url });
         setImagen3(null);
       } catch (error) {
         console.log(error);
       }
     }
-    if (!portada&& !imagen2 && !imagen3) {
+    if (!portada && !imagen2 && !imagen3) {
+      console.log(body)
       newLibro(body).then((result)=> console.log("RESULTADO UPLOAD: "+ result))
     }
 
@@ -129,9 +128,9 @@ const UploadForm = () => {
     <div className='content' >
         <h4>Rellene los siguientes campos</h4>
       <form onSubmit={handleFormSubmit} className="formulario">
-        <input type="text" className="inputNew" name='titulo' placeholder='Titulo'/><br/>
-        <textarea type="text" id="descripcion" name='descripcion' className="inputNew" placeholder='Descripción'/><br/>
-        <input type="text" className="inputNew" name='autores' placeholder='Autor/es, por ejemplo:  Juan Rodriguez, Felipe Pintor'/><br/>
+        <input type="text" className="inputNew" onChange={handleLibroChange} name='titulo' placeholder='Titulo'/><br/>
+        <textarea type="text" id="descripcion" onChange={handleLibroChange} name='descripcion' className="inputNew" placeholder='Descripción'/><br/>
+        <input type="text" className="inputNew" onChange={handleLibroChange} name='autores' placeholder='Autor/es, por ejemplo:  Juan Rodriguez, Felipe Pintor'/><br/>
         
         <div className='numeros'>
           <input type="number" onChange={handleLibroChange} className="inputNew" name='numeroPaginas' placeholder='Número de páginas'/>
@@ -155,18 +154,6 @@ const UploadForm = () => {
         <input type="file" onChange={handleFileInputChange3} /><br/>
         <button type="submit" className='upload'>Upload</button><br/>
   </form>
-
-     
-      {imageUrl && (
-        <div>
-          <img src={imageUrl} alt="uploaded" />
-        </div>
-      )}
-      {imageUrl2 && (
-        <div>
-          <img src={imageUrl2} alt="uploaded" />
-        </div>
-      )}
     </div></>
   );
 };

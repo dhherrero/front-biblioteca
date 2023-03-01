@@ -27,6 +27,7 @@ export const obtenerUnLibro= async(requestNumero) =>{
 
 export const newLibro = async(body) =>{
     try{
+        console.log(body)
         const response = await axios.post(
             'http://localhost:8080/book/newBook',
             body
