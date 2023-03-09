@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from '../NavBar/Navbar';
-import { newLibro } from '../../service/getBooks';
+import { newLibro } from '../../service/bookService';
 import "./Upload.css"
 
 

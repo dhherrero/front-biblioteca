@@ -1,5 +1,5 @@
 
-import {obtenerUnLibro} from "../../service/getBooks";
+import {obtenerUnLibro} from "../../service/bookService";
 import {useEffect, useState} from "react";
 import Navbar from "../NavBar/Navbar";
 import "./InfoLibro.css"

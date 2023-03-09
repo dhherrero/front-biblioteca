@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className={`nav_items ${isOpen && "open"}`}>
                 <Link to="/biblioteca"><a>INICIO</a></Link>
                 <Link to="#"><a>MIS RESERVAS</a></Link>
-                <Link to="/newBook"><a >NUEVO LIBRO</a></Link>
+                {sessionStorage.getItem("rol")==="superusuario" && (<Link to="/newBook"><a >NUEVO LIBRO</a></Link>)}
                 <Link to="#"><a >AJUSTES</a></Link>
                 <Link to="/login"><a >LOGOUT</a></Link>
                

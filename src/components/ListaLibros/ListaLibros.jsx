@@ -1,4 +1,4 @@
-import {obtenerLibros} from "../../service/getBooks";
+import {obtenerLibros} from "../../service/bookService";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import "./ListaLibros.css"
@@ -34,15 +34,15 @@ export default function ListaLibros(){
             <option value="edad">EDAD RECOMENDADA</option>
         </select>
         <div className="listaLibros">
-            {books.map((libro,i)=>{
+            {books.map(({id, portada, titulo,autores,edad },i)=>{
                 return(
-                    <div key={libro.id} className="libros">
-                        <Link to={`/biblioteca/${libro.id}`}>
-                        <img className="portada" src={libro.portada? libro.portada:portadaDefecto}/>
+                    <div key={id} className="libros">
+                        <Link to={`/biblioteca/${id}`}>
+                        <img className="portada" src={portada ? portada : portadaDefecto}/>
                         <div className="infoBook">
-                            <p><b>Titulo: </b> {libro.titulo}</p>
-                            <p><b>Autor/es: </b> {libro.autores}</p>
-                            <p><b>Edad recomendada: </b> {libro.edad}</p>
+                            <p><b>Titulo: </b> {titulo}</p>
+                            <p><b>Autor/es: </b> {autores}</p>
+                            <p><b>Edad recomendada: </b> {edad}</p>
                         </div></Link>
                     </div>
                 )
