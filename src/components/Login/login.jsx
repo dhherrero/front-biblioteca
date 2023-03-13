@@ -29,7 +29,10 @@ export default function Login (){
     const [fecha, setFecha] = useState('');
 
     const handleFechaChange = (event) => {
-        setFecha(event.target.value);
+        setFecha(event.target.value)
+        const selectedDate = new Date(event.target.value);
+        const timestamp = selectedDate.getTime();
+        bodyRegister.fechaNacimiento=timestamp 
       };
     
     const handleInputChange = event => {
@@ -64,7 +67,7 @@ export default function Login (){
         }
         else{
 
-            register(bodyRegister).then((result)=> {console.log("REGISTER: "+ result.data); handleLocation(result)})
+            register(bodyRegister,setLocation)
         }
     }
     

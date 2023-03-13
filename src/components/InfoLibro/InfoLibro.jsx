@@ -30,7 +30,9 @@ export default function InfoLibro({params}){
                         <p><b className="name">Edición: </b> {book.edicion}</p>
                         <p><b className="name">Editorial: </b> {book.editorial}</p>
                         <p><b className="name">Formato: </b> {book.formato}</p>
+                        <button className="botonReserva"> Reservar</button> 
                     </div>
+                      
                 </div>
             </div>):<h2>Libro no encontrado</h2>}  
         </>
