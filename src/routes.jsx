@@ -5,7 +5,7 @@ import NotFound from "./page/not-found/Not-found";
 import Libros from "./components/Libreria/Libros";
 import InfoLibro from "./components/InfoLibro/InfoLibro";
 import UploadForm from "./components/Upload/Upload";
-
+import Ajustes from "./components/Ajustes/Ajustes";
 import {ProtectedRoute,ProtectedRolRoute} from "./service/protectedRoutes";
 import MisReservas from "./components/MisReservas/MisReservas";
 
@@ -21,6 +21,7 @@ export default function Routes (){
                 <ProtectedRoute path="/misreservas" component={MisReservas} />
                 <ProtectedRoute path="/biblioteca/:id" component={InfoLibro} />
                 <ProtectedRolRoute path="/newBook" component={UploadForm} />
+                <ProtectedRoute path="/ajustes" component={Ajustes} />
                 <Route component={NotFound} /> 
                 
             </Switch>
