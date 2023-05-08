@@ -7,7 +7,7 @@ import "./ListaLibros.css"
 
 
 export default function ListaLibros(){
-    const portadaDefecto="/defecto3.png"
+    const portadaDefecto="/noAvaiable.png"
     const [books, setBooks] = useState([])
     const [orderBy, setOrderBy] = useState("defecto") 
     

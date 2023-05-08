@@ -8,6 +8,7 @@ import UploadForm from "./components/Upload/Upload";
 import Ajustes from "./components/Ajustes/Ajustes";
 import {ProtectedRoute,ProtectedRolRoute} from "./service/protectedRoutes";
 import MisReservas from "./components/MisReservas/MisReservas";
+import AllUsers from "./components/AllUsers/AllUsers";
 
 
 export default function Routes (){
@@ -21,6 +22,7 @@ export default function Routes (){
                 <ProtectedRoute path="/misreservas" component={MisReservas} />
                 <ProtectedRoute path="/biblioteca/:id" component={InfoLibro} />
                 <ProtectedRolRoute path="/newBook" component={UploadForm} />
+                <ProtectedRolRoute path="/allUsers" component={AllUsers} />
                 <ProtectedRoute path="/ajustes" component={Ajustes} />
                 <Route component={NotFound} /> 
                 

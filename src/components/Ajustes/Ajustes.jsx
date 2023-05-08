@@ -25,7 +25,7 @@ export default function Ajustes (){
                     <p><b>Nombre:</b> {user.nombre?user.nombre:noContent}</p>
                     <p><b>NIF:</b> {user.nif?user.nif:noContent}</p>
                     <p><b>Correo electrónico: </b>  {user.correoElectronico?user.nombre:noContent}</p>
-                    <p><b>Teléfono:</b>{user.telefono?user.telefono:noContent}</p>
+                    <p><b>Teléfono:</b> {user.telefono?user.telefono:noContent}</p>
                     <p><b>Dirección:</b> {user.direccion?user.direccion:noContent}</p>
                 </div>
                 <div className="cambiarP">

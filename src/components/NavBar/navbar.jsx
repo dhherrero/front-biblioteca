@@ -13,6 +13,7 @@ const Navbar = () => {
                 <Link to="/misreservas"><a>MIS RESERVAS</a></Link>
                 {sessionStorage.getItem("rol")==="superusuario" && (<Link to="/newBook"><a >NUEVO LIBRO</a></Link>)}
                 <Link to="/ajustes"><a >AJUSTES</a></Link>
+                {sessionStorage.getItem("rol")==="superusuario" && (<Link to="/allUsers"><a >USUARIOS</a></Link>)}
                 <Link to="/login"><a >LOGOUT</a></Link>
                
             </div>
