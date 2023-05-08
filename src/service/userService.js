@@ -7,6 +7,23 @@ const handleLocation= (nif,rol,setLocation) =>{
   sessionStorage.setItem("rol",rol)
 
 }
+export const infoUser= async(nif) =>{
+  try{
+      const body= {
+         nif: nif
+      }
+      const response = await axios.post(
+          'http://localhost:8080/user/infoUser',
+          body
+        );
+        console.log(response.data)
+      return response.data
+  }
+  catch (error) {
+      console.log(error);
+    }  
+}
+
 export const login= async(user,setLocation) =>{
     try {
         const {data: {nif,rol,estado }}= await axios.post(

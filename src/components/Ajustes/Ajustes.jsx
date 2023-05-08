@@ -1,7 +1,19 @@
 import Navbar from "../NavBar/Navbar";
 import './Ajustes.css';
+import { infoUser } from "../../service/userService";
+import {useEffect, useState} from "react";
 
 export default function Ajustes (){
+    const noContent ="undefined"
+    
+    const [user, setUser] = useState({nombre:'',nif:'',correoElectronico:'',telefono:'',direccion:''})
+
+    useEffect(()=> {
+        infoUser(sessionStorage.getItem("nif"))
+            .then((result) =>{ setUser(result); console.log(user)})
+        
+    },[])
+    
     return(
         <>
             <Navbar />
@@ -10,10 +22,11 @@ export default function Ajustes (){
             <div className="ajustesContent">
                 <div className="infoUser">
                 <h3 className="changePP">Información usuario</h3>
-                    <p><b>Nombre:</b></p>
-                    <p><b>Correo electrónico:</b></p>
-                    <p><b>Teléfono:</b></p>
-                    <p><b>Dirección:</b></p>
+                    <p><b>Nombre:</b> {user.nombre?user.nombre:noContent}</p>
+                    <p><b>NIF:</b> {user.nif?user.nif:noContent}</p>
+                    <p><b>Correo electrónico: </b>  {user.correoElectronico?user.nombre:noContent}</p>
+                    <p><b>Teléfono:</b>{user.telefono?user.telefono:noContent}</p>
+                    <p><b>Dirección:</b> {user.direccion?user.direccion:noContent}</p>
                 </div>
                 <div className="cambiarP">
                     <form>
