@@ -1,0 +1,9 @@
+
+.totalInfoUser{
+    border: 1px rgb(151, 150, 166) solid;
+    border-radius: 1%;
+    text-align: left;
+    padding-left: 10px;
+    width: 800px;
+    margin: 10px;
+}

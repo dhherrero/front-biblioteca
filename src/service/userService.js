@@ -7,6 +7,13 @@ const handleLocation= (nif,rol,setLocation) =>{
   sessionStorage.setItem("rol",rol)
 
 }
+export const getAllUsers= async() =>{
+  const url = "http://localhost:8080/user/allUsers"
+  //const url = `http://localhost:8080/book/allBooks/${orderBy}`
+  const result = await axios.get(url)
+  //const result = await axios.get(url)
+  return result
+}
 export const infoUser= async(nif) =>{
   try{
       const body= {
