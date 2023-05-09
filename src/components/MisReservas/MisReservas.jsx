@@ -28,8 +28,8 @@ export default function MisReservas(){
                             <p><b>FECHA RESERVA:</b> {fechaInicio}</p>
                             <p><b>FECHA FIN RESERVA:</b> {fechaFin}</p>
                             <div className='botones'>
-                                <button className="botonCancelarReserva"> Cancelar reserva</button> 
-                                <button className="botonAmpliarReserva"> Ampliar reserva</button> 
+                                    <button className="botonCancelarReserva"> Cancelar reserva</button> 
+                                    <button className="botonAmpliarReserva"> Ampliar reserva</button>      
                             </div>
                         </div>
                     </div>
