@@ -5,14 +5,93 @@ import {useEffect, useState} from "react";
 
 export default function Ajustes (){
     const noContent ="undefined"
-    
+    const [borderOld, setBorderOld]= useState('grey solid 1px');
     const [user, setUser] = useState({nombre:'',nif:'',correoElectronico:'',telefono:'',direccion:''})
+    const [borderEdit, setBorderEdit] = useState('grey solid 1px');
+    const [newP, setNewP] = useState("");
+    const [eqP, setEqP] = useState("");
+    const [actualP, setActualP] = useState("")
+    const [isDisable,setIsDiasble]= useState(true);
+    const [oldPassCheck, setOldCheck]= useState(false);
+    const [newPasCheck, setNewPCheck]= useState(false);
 
     useEffect(()=> {
         infoUser(sessionStorage.getItem("nif"))
             .then((result) =>{ setUser(result); console.log(user)})
         
     },[])
+
+    const checkPasswordEquals = (password) =>{
+        if (password=== ''){
+            setBorderEdit("grey solid 1px")
+            setNewPCheck(false)
+            setIsDiasble(true)
+        }
+        else if (password === eqP) {
+            setBorderEdit('green solid 1px')
+            setNewPCheck(true)
+            if (oldPassCheck===true){
+                setIsDiasble(false)
+            }
+        }
+        else {
+            setBorderEdit("red solid 1px")
+            setNewPCheck(false)
+            setIsDiasble(true)
+        }
+    }
+    const secondCheck= (password) =>{
+        if (password=== ''){
+            setBorderEdit("grey solid 1px")
+            setNewPCheck(false)
+            setIsDiasble(true)
+        }
+        else if (password === newP) {
+            setBorderEdit('green solid 1px')
+            setNewPCheck(true)
+            if (oldPassCheck===true){
+                setIsDiasble(false)
+            }
+            
+        }
+        else {
+            setBorderEdit("red solid 1px")
+            setNewPCheck(false)
+            setIsDiasble(true)
+        }
+    }
+    const handleActualPas = (password)=>{
+        setActualP(password)
+       if (password===user.password){
+            setOldCheck(true)
+            setBorderOld('green solid 1px')
+            if (newPasCheck===true){
+                setIsDiasble(false)
+            }
+        }
+        else if (password==''){
+            setOldCheck(false)
+            setBorderOld('grey solid 1px')
+            setIsDiasble(true)
+        }
+        else{
+            setOldCheck(false)
+            setBorderOld('red solid 1px')
+            setIsDiasble(true)
+        }
+        
+    }
+
+    const handleChangeNewPassword = (password) =>{
+        setNewP(password);
+        checkPasswordEquals(password);
+            
+    }
+
+    const handleEqPassword = (password)=>{
+        setEqP(password);
+        secondCheck(password);
+    }
     
     return(
         <>
@@ -31,15 +110,18 @@ export default function Ajustes (){
                 <div className="cambiarP">
                     <form>
                         <div className="formularioCambio">
-                            <h3 className="changePP">Cambio de contraseña</h3>
+                            <h3 className="changePP">Cambio de contraseña </h3>
                             <label  className="labelPassword" >Contraseña actual</label>
-                            <input className="inputAjustes" type="password" name="oldPassword"/>
+                            <input className="inputAjustes" type="password" style={{border: borderOld}} name="oldPassword" value={actualP} onChange={(actualPas) => {handleActualPas(actualPas.target.value)}}/>
                             <label className="labelPassword" >Contraseña nueva</label>
-                            <input className="inputAjustes" type="password" name="newPassword"/>
-                            <label className="labelPassword" >Repite la contraseña nueva</label>
-                            <input className="inputAjustes" type="password" name="repNewPassword"/>
+                            <input className="inputAjustes" style={{border: borderEdit}} value={newP} onChange={(newPas) => {handleChangeNewPassword(newPas.target.value)}} type="password" name="newPassword"/>
+                            <label className="labelPassword"  >Repite la contraseña nueva</label>
+                            <input className="inputAjustes" style={{border: borderEdit}} value={eqP} onChange={(eqPas) => handleEqPassword(eqPas.target.value)} type="password" name="repNewPassword"/> <br/>
+                            <button className="accionUser" disabled={isDisable}>Cambiar contraseña</button> 
                         </div>
+                        
                     </form>
+                    
                 </div>
             </div>
             

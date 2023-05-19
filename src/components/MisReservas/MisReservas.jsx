@@ -19,14 +19,17 @@ export default function MisReservas(){
             <Navbar />
             <div className='listaReservas'>
                 <h2>MIS RESERVAS</h2>
-            {misReserva?misReserva.map(({titulo,portada,fechaInicio, fechaFin, idReserva },i)=>{
+            {misReserva?misReserva.map(({titulo,portada,fechaInicio, fechaFin, idReserva, nifUsuario },i)=>{
                 return(
                     <div className='reserva' key={idReserva}>
                         <img src={portada}></img>
                         <div className='reserva-content'>
-                            <h2>{titulo}</h2>
-                            <p><b>FECHA RESERVA:</b> {fechaInicio}</p>
-                            <p><b>FECHA FIN RESERVA:</b> {fechaFin}</p>
+                            <h3>{titulo}</h3>
+                            {sessionStorage.getItem("rol")==="superusuario" &&<p className='infoReserva'><b>NIF:</b> {nifUsuario}</p>}
+                            <div className='fechas'>
+                                    <p className='infoReserva'><b>FECHA RESERVA:</b> {fechaInicio}</p>
+                                    <p className='infoReserva' ><b>FECHA FIN RESERVA:</b> {fechaFin}</p>
+                            </div>
                             <div className='botones'>
                                     <button className="botonCancelarReserva"> Cancelar reserva</button> 
                                     <button className="botonAmpliarReserva"> Ampliar reserva</button>      
