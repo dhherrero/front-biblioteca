@@ -12,7 +12,7 @@
     position:-webkit-sticky;
     display: flex;
     flex-direction: column;
-    background-color: #240046;
+    background-color: #04049f;
     max-height: 560px;
     overflow: hidden;
     width: 460px;
@@ -90,7 +90,7 @@
   }
   
   .register label {
-    color: #573b8a;
+    color: #04049f;
     transform: scale(.6);
   }
   
@@ -113,7 +113,7 @@
     height: 40px;
     margin: 12px auto 10%;
     color: #fff;
-    background: #573b8a;
+    background: #3e9f2f;
     font-size: 1rem;
     font-weight: bold;
     border: none;
@@ -123,5 +123,5 @@
   }
   
   .form button:hover {
-    background-color: #6d44b8;
+    background-color: #24a620;
   }
