@@ -36,7 +36,7 @@ export default function InfoLibro({params}){
                             <p><b className="name">Fecha edición: </b> {book.fechaEdicion?book.fechaEdicion:desconocido}</p>
                             <p><b className="name">Género: </b> {book.genero?book.genero:desconocido}</p>  
                         </div>
-                    <button className="botonReserva"> Reservar</button> 
+                    {book.disponible===true && <button className="botonReserva"> Reservar</button> }
                     {sessionStorage.getItem("rol")==="superusuario" && <button className="botonReserva" style={{marginRight:"5px", backgroundColor:"#F85C5C"}}> Eliminar</button> }
                     </div>
                       
