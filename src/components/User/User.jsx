@@ -51,7 +51,7 @@ export default function User (persona){
         <div className='totalInfoUser'>
             <div className='textoUser'>
                 <p><b>Nombre: </b> <input className='datosUser' style={{ backgroundColor, border }} type="text" value={nombre} onChange={(name) => setNombre(name.target.value)} disabled={!isEditable} /></p>
-                <p><b>NIF: </b> <input className='datosUser' style={{ backgroundColor, border }} type="text" value={nif} onChange={(n) => setNif(n.target.value)} disabled={!isEditable} /></p>
+                {/*<p><b>NIF: </b> <input className='datosUser' style={{ backgroundColor, border }} type="text" value={nif} onChange={(n) => setNif(n.target.value)} disabled={!isEditable} /></p>*/}
                 <p><b>Password: </b><input className='datosUser' style={{ backgroundColor, border }} type="text" value={password} onChange={(t) => setPassword(t.target.value)} disabled={!isEditable} /></p>
                 <p><b>Correo electrónico: </b> <input className='datosUser' style={{ backgroundColor, border }} type="text" value={correo} onChange={(email) => setCorreo(email.target.value)} disabled={!isEditable} /></p>
                 <p><b>Teléfono: </b> <input className='datosUser' style={{ backgroundColor, border }} type="text" value={telefono} onChange={(telephone) => setTelefono(telephone.target.value)} disabled={!isEditable} /></p>
