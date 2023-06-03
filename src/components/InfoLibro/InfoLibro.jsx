@@ -3,18 +3,37 @@ import {obtenerUnLibro} from "../../service/bookService";
 import {useEffect, useState} from "react";
 import Navbar from "../NavBar/Navbar";
 import "./InfoLibro.css"
-
+import { newReserva } from "../../service/reservasService";
+import { deleteBook } from "../../service/bookService";
+import {useLocation } from "wouter";
 export default function InfoLibro({params}){
     const portadaDefecto="/noAvaiable.png"
     const {id} = params
     const [book, setBook] = useState()
     const desconocido= "por definir"
+    const [, setLocation] = useLocation()
+    
     
     useEffect(()=> {
         obtenerUnLibro(id)
             .then((result) =>{ setBook(result); console.log(book)})
         
     },[])
+
+    const handleRerserva= async()=>{
+        const body = {
+            nifUsuario: sessionStorage.getItem("nif"),
+            idLibro: id
+        }
+        await newReserva(body).then(setLocation("/misreservas"))
+    }
+
+    const handleEliminar= async()=>{
+        const body = {
+            id: parseInt(id)
+        }
+        await deleteBook(body).then(window.location.href="/biblioteca")
+    }
 
     return(
         <>
@@ -37,7 +56,7 @@ export default function InfoLibro({params}){
                             <p><b className="name">Género: </b> {book.genero?book.genero:desconocido}</p>  
                         </div>
                     {book.disponible===true && <button className="botonReserva"> Reservar</button> }
-                    {sessionStorage.getItem("rol")==="superusuario" && <button className="botonReserva" style={{marginRight:"5px", backgroundColor:"#F85C5C"}}> Eliminar</button> }
+                    {sessionStorage.getItem("rol")==="superusuario" && <button className="botonReserva" style={{marginRight:"5px", backgroundColor:"#F85C5C"}} onClick={handleEliminar}> Eliminar</button> }
                     </div>
                       
                 </div>

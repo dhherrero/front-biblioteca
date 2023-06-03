@@ -17,3 +17,10 @@ export const reservas= async(nif,rol) =>{
         console.log(error);
       }
 }
+
+export const newReserva = async (body) =>{  
+    const url= "http://localhost:8080/reserva/new"
+    const result= await axios.post(url,body)
+    return result
+}
+

@@ -40,6 +40,12 @@ export const newLibro = async(body) =>{
       }
 }
 
+export const deleteBook = async (body) =>{  
+    const url= "http://localhost:8080/book/deleteBook"
+    const result= await axios.post(url,body)
+    return result
+}
+
 
 
 
