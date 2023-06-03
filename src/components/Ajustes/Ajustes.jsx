@@ -2,6 +2,7 @@ import Navbar from "../NavBar/Navbar";
 import './Ajustes.css';
 import { infoUser } from "../../service/userService";
 import {useEffect, useState} from "react";
+import { changePassword } from "../../service/userService";
 
 export default function Ajustes (){
     const noContent ="undefined"
@@ -11,6 +12,7 @@ export default function Ajustes (){
     const [newP, setNewP] = useState("");
     const [eqP, setEqP] = useState("");
     const [actualP, setActualP] = useState("")
+    const [response, setResponse] = useState()
     const [isDisable,setIsDiasble]= useState(true);
     const [oldPassCheck, setOldCheck]= useState(false);
     const [newPasCheck, setNewPCheck]= useState(false);
@@ -92,6 +94,18 @@ export default function Ajustes (){
         setEqP(password);
         secondCheck(password);
     }
+
+    const handleChangePassword = async()=>{
+        const body = {
+            nif: sessionStorage.getItem("nif"),
+            password : newP
+        }
+        try{
+            await changePassword(body).then(setResponse("Se ha cambiado correctamente"))
+        }catch{
+            setResponse("Error al cambiar la contraseña")
+        }
+    }
     
     return(
         <>
@@ -117,7 +131,8 @@ export default function Ajustes (){
                             <input className="inputAjustes" style={{border: borderEdit}} value={newP} onChange={(newPas) => {handleChangeNewPassword(newPas.target.value)}} type="password" name="newPassword"/>
                             <label className="labelPassword"  >Repite la contraseña nueva</label>
                             <input className="inputAjustes" style={{border: borderEdit}} value={eqP} onChange={(eqPas) => handleEqPassword(eqPas.target.value)} type="password" name="repNewPassword"/> <br/>
-                            <button className="accionUser" disabled={isDisable}>Cambiar contraseña</button> 
+                            <button className="accionUser" disabled={isDisable} onClick={handleChangePassword}>Cambiar contraseña</button>  <br/>
+                            {response? <div><p><b>Resultado:</b> {response} </p> <br/></div>:"" }
                         </div>
                         
                     </form>

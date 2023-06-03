@@ -58,3 +58,9 @@ export const register= async(body,setLocation)=>{
   }
 }
 
+export const changePassword = async(body)=>{
+  const url= "http://localhost:8080/user/changePassword"
+  const result= await axios.post(url,body)
+  return result
+}
+
