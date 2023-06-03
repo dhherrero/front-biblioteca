@@ -13,6 +13,7 @@ export default function InfoLibro({params}){
     const desconocido= "por definir"
     const [, setLocation] = useLocation()
     const [response, setResponse]=useState();
+    const [isDisabled,setIsDisabled]=useState(false)
     
     
     useEffect(()=> {
@@ -27,7 +28,7 @@ export default function InfoLibro({params}){
             idLibro: id
         }
         try{
-            await newReserva(body).then(setResponse("Reservado correctamente"))
+            await newReserva(body).then(()=>{setResponse("Reservado correctamente"); setIsDisabled(true)})
         }catch{
             setResponse("No reservado")
         }
@@ -61,7 +62,7 @@ export default function InfoLibro({params}){
                             <p><b className="name">Fecha edición: </b> {book.fechaEdicion?book.fechaEdicion:desconocido}</p>
                             <p><b className="name">Género: </b> {book.genero?book.genero:desconocido}</p>  
                         </div>
-                    {book.disponible===true &&book.canReserve===true&& <button className="botonReserva" onClick={handleRerserva}> Reservar</button> }
+                    {book.disponible===true &&book.canReserve===true&& <button className="botonReserva" onClick={handleRerserva} disabled={isDisabled}> Reservar</button> }
                     {sessionStorage.getItem("rol")==="superusuario" && <button className="botonReserva" style={{marginRight:"5px", backgroundColor:"#F85C5C"}} onClick={handleEliminar}> Eliminar</button> }
                     {response? <div><p><b>Resultado:</b> {response} </p> <br/></div>:"" }
                     </div>

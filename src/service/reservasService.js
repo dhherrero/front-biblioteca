@@ -24,3 +24,14 @@ export const newReserva = async (body) =>{
     return result
 }
 
+export const ampliarReserva = async (body) =>{  
+    const url= "http://localhost:8080/reserva/ampliarReserva"
+    const result= await axios.post(url,body)
+    return result
+}
+
+export const cancelarReserva = async (body) =>{  
+    const url= "http://localhost:8080/reserva/cancelarReserva"
+    const result= await axios.post(url,body)
+    return result
+}

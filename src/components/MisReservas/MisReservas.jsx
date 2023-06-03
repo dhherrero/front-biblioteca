@@ -2,12 +2,27 @@ import './MisReservas.css'
 import {reservas } from '../../service/reservasService'
 import Navbar from "../NavBar/Navbar";
 import { useState, useEffect } from 'react';
+import { ampliarReserva, cancelarReserva } from '../../service/reservasService';
 
 export default function MisReservas(){
   const nif= sessionStorage.getItem("nif")
   const rol= sessionStorage.getItem("rol")
 
   const [misReserva, setMisReservas] = useState([])
+  
+  const handleAmpliarReserva = async(idReserva)=> {
+    const body = {
+        idReserva: idReserva
+    }
+    await ampliarReserva(body).then(window.location.href="/misreservas")
+  }
+  const handleCancelarReserva = async(idReserva)=> {
+    const body = {
+        idReserva: idReserva
+    }
+    await cancelarReserva(body).then(window.location.href="/misreservas")
+  }
+
 
   useEffect(()=> {
     reservas(nif,rol)
@@ -19,7 +34,7 @@ export default function MisReservas(){
             <Navbar />
             <div className='listaReservas'>
                 <h2>MIS RESERVAS</h2>
-            {misReserva?misReserva.map(({titulo,portada,fechaInicio, fechaFin, idReserva, nifUsuario },i)=>{
+            {misReserva.length>0?misReserva.map(({titulo,portada,fechaInicio, fechaFin, idReserva, nifUsuario },i)=>{
                 return(
                     <div className='reserva' key={idReserva}>
                         <img src={portada}></img>
@@ -31,8 +46,8 @@ export default function MisReservas(){
                                     <p className='infoReserva' ><b>FECHA FIN RESERVA:</b> {fechaFin}</p>
                             </div>
                             <div className='botones'>
-                                    <button className="botonCancelarReserva"> Cancelar reserva</button> 
-                                    <button className="botonAmpliarReserva"> Ampliar reserva</button>      
+                                    <button className="botonCancelarReserva" onClick={()=>handleCancelarReserva(idReserva)}> Cancelar reserva</button> 
+                                    <button className="botonAmpliarReserva" onClick={()=>handleAmpliarReserva(idReserva)}> Ampliar reserva</button>      
                             </div>
                         </div>
                     </div>
