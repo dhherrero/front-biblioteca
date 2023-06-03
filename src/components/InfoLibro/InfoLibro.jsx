@@ -12,6 +12,7 @@ export default function InfoLibro({params}){
     const [book, setBook] = useState()
     const desconocido= "por definir"
     const [, setLocation] = useLocation()
+    const [response, setResponse]=useState();
     
     
     useEffect(()=> {
@@ -25,7 +26,12 @@ export default function InfoLibro({params}){
             nifUsuario: sessionStorage.getItem("nif"),
             idLibro: id
         }
-        await newReserva(body).then(setLocation("/misreservas"))
+        try{
+            await newReserva(body).then(setResponse("Reservado correctamente"))
+        }catch{
+            setResponse("No reservado")
+        }
+        
     }
 
     const handleEliminar= async()=>{
@@ -55,8 +61,9 @@ export default function InfoLibro({params}){
                             <p><b className="name">Fecha edición: </b> {book.fechaEdicion?book.fechaEdicion:desconocido}</p>
                             <p><b className="name">Género: </b> {book.genero?book.genero:desconocido}</p>  
                         </div>
-                    {book.disponible===true && <button className="botonReserva"> Reservar</button> }
+                    {book.disponible===true &&book.canReserve===true&& <button className="botonReserva" onClick={handleRerserva}> Reservar</button> }
                     {sessionStorage.getItem("rol")==="superusuario" && <button className="botonReserva" style={{marginRight:"5px", backgroundColor:"#F85C5C"}} onClick={handleEliminar}> Eliminar</button> }
+                    {response? <div><p><b>Resultado:</b> {response} </p> <br/></div>:"" }
                     </div>
                       
                 </div>

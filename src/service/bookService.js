@@ -12,7 +12,8 @@ export const obtenerLibros= async(orderBy) =>{
 export const obtenerUnLibro= async(requestNumero) =>{
     try{
         const body= {
-            id:requestNumero
+            id:requestNumero,
+            nifUsuario: sessionStorage.getItem("nif")
         }
         const response = await axios.post(
             'http://localhost:8080/book/getBook',
