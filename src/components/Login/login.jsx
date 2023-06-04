@@ -95,6 +95,7 @@ export default function Login (){
 					<input className="inputRegister" onChange={handleRegisterChange} type="password" name="password" placeholder="Password" required=""/>
                     <input className="inputRegister" onChange={handleRegisterChange} type="text" name="nombre" placeholder="Name" required=""/>
                     <input className="inputRegister" onChange={handleRegisterChange} type="text" name="telefono" placeholder="Teléfono" required=""/>
+                    <input className="inputRegister" onChange={handleRegisterChange} type="text" name="direccion" placeholder="Direccion" required=""/>
                     <input className="inputRegister" onChange={handleRegisterChange} type="text" name="webPersonal" placeholder="Web personal" required=""/>
                     <span className='fecha' htmlFor="fecha">Fecha de nacimiento:</span>
                     <input type="date" id="fecha" name="fechaNacimiento" value={fecha} onChange={handleFechaChange} />

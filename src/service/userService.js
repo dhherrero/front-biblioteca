@@ -64,3 +64,14 @@ export const changePassword = async(body)=>{
   return result
 }
 
+export const deleteUser = async(body)=>{
+  const url= "http://localhost:8080/user/deleteUser"
+  const result= await axios.post(url,body)
+  return result
+}
+
+export const editarUser = async(body)=>{
+  const url= "http://localhost:8080/user/updateUser"
+  const result= await axios.post(url,body)
+  return result
+}

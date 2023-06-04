@@ -1,5 +1,6 @@
 import './User.css';
 import {useEffect, useState} from "react";
+import { editarUser,deleteUser } from '../../service/userService';
 
 
 export default function User (persona){
@@ -23,6 +24,7 @@ export default function User (persona){
 
    const [color, setBackgroundEliminarColor] = useState('red');
    const [borderEliminar, setEliminarBorder] = useState('1px solid red');
+   const [response, setResponse]=useState();
  
    const handleEditButtonClick = () => {
      setIsEditable(true);
@@ -33,14 +35,36 @@ export default function User (persona){
     setBorderEdit();
    };
 
-   const handleSaveButtonClick = () => {
+   const handleSaveButtonClick = async() => {
     setIsEditable(false);
     setBackgroundColor('white');
    setBorder('0px');
    setBackgroundEliminarColor('red');
     setEliminarBorder('1px solid red');
     setBorderEdit('2px solid #8DB6F5');
+    const body = {
+        nif:nif,
+        nombre: nombre,
+        password: password,
+        telefono:telefono,
+        direccion:direccion,
+        correoElectronico: correo,
+        webPersonal: web
+    }
+    try{
+        await editarUser(body).then(window.location.href="/allUsers")
+    }catch{
+        setResponse("Error")
+    }
+
   };
+
+  const handeButtonEliminar = async() => {
+    const body = {
+        nif:nif
+    }
+    await deleteUser(body).then(window.location.href="/allUsers")
+  }
 
 
  
@@ -62,7 +86,8 @@ export default function User (persona){
                 <div className="alienacion">
                     <button className="accionUser" onClick={handleEditButtonClick}  style={{border: borderEdit}} disabled={isEditable}>Editar</button> <br/> 
                     <button className="accionUser"  onClick={handleSaveButtonClick}  disabled={!isEditable}>Guardar</button><br/>
-                    <button className="accionUser"  onClick={handleSaveButtonClick} style={{color: color,border: borderEliminar}} disabled={isEditable}>Eliminar</button>
+                    <button className="accionUser"  onClick={handeButtonEliminar} style={{color: color,border: borderEliminar}} disabled={isEditable}>Eliminar</button>
+                    {response? <div><p><b>{response}</b> </p><br/></div>:"" }
                 </div> 
             </div>
         </div>
