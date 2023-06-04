@@ -66,7 +66,6 @@ export default function Login (){
             alert("Rellena  los campos NIF y PASSWORD")  
         }
         else{
-
             register(bodyRegister,setLocation)
         }
     }
@@ -106,16 +105,7 @@ export default function Login (){
         
 	</div>
     
-   {/* <section className="App-content">
-           <Title />
-            <form>
-                <input type="text" id="user" className="input" placeholder="Nombre de usuario"  ></input>
-                <input type="password" id="pass" className="input" placeholder="Password" ></input>
-            </form>
-            <button onClick={handleLogin}>
-                Login
-            </button>
-        </section>  */}
+   
     </>
     )
     }

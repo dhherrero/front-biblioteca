@@ -14,7 +14,7 @@ const Navbar = () => {
                 {sessionStorage.getItem("rol")==="superusuario" && (<Link to="/newBook"><a>NUEVO LIBRO</a></Link>)}
                 {sessionStorage.getItem("rol")==="superusuario" && (<Link to="/allUsers"><a>USUARIOS</a></Link>)}
                 <Link to="/ajustes"><a>AJUSTES</a></Link>
-                <Link to="/login"><a>LOGOUT</a></Link>
+                <Link to="/"><a>LOGOUT</a></Link>
             </div>
             <div className={`nav_toggle ${isOpen && "open"}`} onClick={ () => setIsOpen(!isOpen)} >
                 <span></span>
