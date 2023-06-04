@@ -7,6 +7,7 @@ import { ampliarReserva, cancelarReserva } from '../../service/reservasService';
 export default function MisReservas(){
   const nif= sessionStorage.getItem("nif")
   const rol= sessionStorage.getItem("rol")
+  const portadaDefecto="/noAvaiable.png"
 
   const [misReserva, setMisReservas] = useState([])
   
@@ -37,7 +38,7 @@ export default function MisReservas(){
             {misReserva.length>0?misReserva.map(({titulo,portada,fechaInicio, fechaFin, idReserva, nifUsuario },i)=>{
                 return(
                     <div className='reserva' key={idReserva}>
-                        <img src={portada}></img>
+                        <img src={portada?portada:portadaDefecto}></img>
                         <div className='reserva-content'>
                             <h3>{titulo}</h3>
                             {sessionStorage.getItem("rol")==="superusuario" &&<p className='infoReserva'><b>NIF:</b> {nifUsuario}</p>}
