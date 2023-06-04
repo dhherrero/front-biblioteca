@@ -31,28 +31,28 @@ export const infoUser= async(nif) =>{
     }  
 }
 
-export const login= async(user,setLocation) =>{
+export const login= async(user,setLocation,setResponse) =>{
     try {
         const {data: {nif,rol,estado }}= await axios.post(
           'http://localhost:8080/user/login',
           user);
       
         console.log(estado)
-        estado === "OK" ?  handleLocation(nif,rol,setLocation)  : alert("ERROR")
+        estado === "OK" ?  handleLocation(nif,rol,setLocation)  : setResponse("Usuario y/o contraseña incorrectos")
         
       } catch (error) {
         console.log(error);
       }
 }
 
-export const register= async(body,setLocation)=>{
+export const register= async(body,setLocation,setResponse)=>{
   try {
     const response = await axios.post(
       'http://localhost:8080/user/newUser',
       body
     );
     console.log(response.data);
-    response.data=== 'OK' ? handleLocation(body.nif, body.rol, setLocation) : alert("ERROR")
+    response.data=== 'OK' ? handleLocation(body.nif, body.rol, setLocation) :setResponse("Error al registrar el usuario, compruebe los datos")
   } catch (error) {
     console.log(error);
   }

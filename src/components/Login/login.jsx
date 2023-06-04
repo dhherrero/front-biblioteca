@@ -8,6 +8,9 @@ import Error from '../Error/Error'
 export default function Login (){
     const [, setLocation] = useLocation()
     const [error, setError]= useState(false)
+    const [response, setResponse]=useState();
+    
+
     
     const [formData, setFormData] = useState({
         nif: '',
@@ -52,10 +55,11 @@ export default function Login (){
         console.log(formData)
         if(!formData.nif || !formData.password){
             console.log("vacio")
-            alert("Rellena todos los campos")  
+            setResponse("Rellena al menos los campos NIF y password")
+            //alert("Rellena todos los campos")  
         }
         else{
-            login(formData, setLocation)
+            login(formData, setLocation,setResponse)
         }
     }
 
@@ -63,10 +67,11 @@ export default function Login (){
         event.preventDefault()
         if(!bodyRegister.nif || !bodyRegister.password){
             console.log("vacio")
-            alert("Rellena  los campos NIF y PASSWORD")  
+           // alert("Rellena  los campos NIF y PASSWORD")  
+            setResponse("Rellena al menos los campos NIF y password")
         }
         else{
-            register(bodyRegister,setLocation)
+            register(bodyRegister,setLocation,setResponse)
         }
     }
     
@@ -102,6 +107,7 @@ export default function Login (){
 				</form>
 			</div>
             {/*<span className='mensaje'>{error?(<Error content="Usuario o contraseña incorrecta"/>):"ola"}</span>*/}
+            {response? <div className='mensaje'><p><b> {response}</b> </p> <br/></div>:"" }
         
 	</div>
     

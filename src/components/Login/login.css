@@ -46,9 +46,15 @@
 
   .mensaje{
     position: fixed;
-    margin-block-start: 30%;
-    margin-inline-start: 7.5%;
-    color: aqua;
+    margin-top: 16%;
+    margin-left: 30%;
+    max-height: 60px;
+    color: white;
+    border: 2px solid rgb(238, 130, 130);
+    border-radius: 10px;
+    background-color: #cf1b1b86;
+    padding-left: 5px;
+    padding-right: 5px;
   }
   
   
